@@ -89,13 +89,15 @@ int main ()
         con->setSchema("test");
     } catch (exception& e) {
         cerr << e.what() << endl;
-        exit(0);
+        exit(1);
     }
     
     cout << "Running..." << endl;
     
     int reading = 0;
+    // Get reading from sensor
     reading = getReading(adc,analogPin,refVoltage);
+    // Execute query
     writeToDB(con,reading);
     
     for (int i = 0; i < (numOfReadings - 1); ++i) {
