@@ -20,8 +20,8 @@
 using namespace std;
 
 #define HOST_ADDR "localhost"
-#define USER_NAME "root"
-#define USER_PASSWD "09071981"
+#define USER_NAME "your username"
+#define USER_PASSWD "your password"
 
 int32_t getReading(MCP3008* adc, int32_t analogPin, double refVoltage) {
     int32_t temp = 0;
