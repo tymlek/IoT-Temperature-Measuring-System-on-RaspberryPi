@@ -28,7 +28,7 @@ int32_t getReading(MCP3008* adc, int32_t analogPin, double refVoltage) {
     int val = 0;
     
     val = adc->analogRead(analogPin);   // Two first readings discarted
-    usleep(60000);                          // due tofluctuations
+    usleep(60000);                          // due to fluctuations
     val = adc->analogRead(analogPin);
     usleep(60000);
     val = adc->analogRead(analogPin);
