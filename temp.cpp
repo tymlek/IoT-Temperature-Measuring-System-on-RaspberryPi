@@ -22,6 +22,7 @@ using namespace std;
 #define HOST_ADDR "localhost"
 #define USER_NAME "your username"
 #define USER_PASSWD "your password"
+#define TABLE "test"
 
 int32_t getReading(MCP3008* adc, int32_t analogPin, double refVoltage) {
     int32_t temp = 0;
@@ -86,7 +87,7 @@ int main ()
         con = driver->connect(HOST_ADDR,USER_NAME,USER_PASSWD);
         
         // Connect to the MySQL test database
-        con->setSchema("test");
+        con->setSchema(TABLE);
     } catch (exception& e) {
         cerr << e.what() << endl;
         exit(1);
