@@ -20,15 +20,15 @@
 using namespace std;
 
 #define HOST_ADDR "localhost"
-#define USER_NAME "root"
-#define USER_PASSWD "09071981"
+#define USER_NAME "your_user_name"
+#define USER_PASSWD "your_password"
 
 int32_t getReading(MCP3008* adc, int32_t analogPin, double refVoltage) {
     int32_t temp = 0;
     int val = 0;
     
     val = adc->analogRead(analogPin);   // Two first readings discarted
-    usleep(60000);                          // due tofluctuations
+    usleep(60000);                          // due to fluctuations
     val = adc->analogRead(analogPin);
     usleep(60000);
     val = adc->analogRead(analogPin);
@@ -96,7 +96,9 @@ int main (int argc, char** argv)
     cout << "Running..." << endl;
     
     int reading = 0;
+    // Get reading from sensor
     reading = getReading(adc,analogPin,refVoltage);
+    // Execute query
     writeToDB(con,reading);
     
     for (int i = 0; i < (numOfReadings - 1); ++i) {
@@ -109,6 +111,7 @@ int main (int argc, char** argv)
         writeToDB(con,reading);
     }
     
+    // Execute query
     readFromDB(con);
     
     delete con;
